@@ -22,7 +22,10 @@ public class Highlight : MonoBehaviour
         if (Camera.main)
             _mouseLook = Camera.main.GetComponent<SmoothMouseLook>();
         
-        //_material = gameObject.GetComponent<Renderer>().material;
+        if(particleSystem)
+            particleSystem.Play();
+        _material.DisableKeyword("_EMISSION");
+        _material.globalIlluminationFlags = MaterialGlobalIlluminationFlags.EmissiveIsBlack;
     }
 
     // Update is called once per frame
@@ -34,7 +37,7 @@ public class Highlight : MonoBehaviour
     void OnMouseExit()
     {
         if (particleSystem)
-            particleSystem.Stop();
+            particleSystem.Play();
         _material.DisableKeyword("_EMISSION");
         _material.globalIlluminationFlags = MaterialGlobalIlluminationFlags.EmissiveIsBlack;
 
@@ -43,7 +46,7 @@ public class Highlight : MonoBehaviour
     void OnMouseEnter()
     {
         if (particleSystem)
-            particleSystem.Play();
+            particleSystem.Stop();
         _material.EnableKeyword("_EMISSION");
         _material.globalIlluminationFlags = MaterialGlobalIlluminationFlags.None;
     }
