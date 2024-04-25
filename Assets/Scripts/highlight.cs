@@ -5,31 +5,24 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.VFX;
 using UnityLibrary;
 
-public class highlight : MonoBehaviour
+public class Highlight : MonoBehaviour
 {
     // Start is called before the first frame update
-    //public VisualEffect particleSystem;
-    //public GameObject activateUI;
-
-    public scrapbookLobbyScene b;
-    public int page;
-    public Color activeColor;
+    public VisualEffect particleSystem;
+    
     private SmoothMouseLook _mouseLook;
     public Material _material;
+    
+    private GameObject _activateUI;
+    private scrapBookPage _page;
 
 
-   /*private void OnMouseUpAsButton(){
-       activateUI.SetActive(true);
-       if (_mouseLook)
-       {
-           _mouseLook.PauseLook();
-       }
-    }*/
     void Start()
     {
         if (Camera.main)
             _mouseLook = Camera.main.GetComponent<SmoothMouseLook>();
-        //_material = GetComponent<Renderer>().material;
+        
+        //_material = gameObject.GetComponent<Renderer>().material;
     }
 
     // Update is called once per frame
@@ -40,7 +33,8 @@ public class highlight : MonoBehaviour
 
     void OnMouseExit()
     {
-        //particleSystem.Stop();
+        if (particleSystem)
+            particleSystem.Stop();
         _material.DisableKeyword("_EMISSION");
         _material.globalIlluminationFlags = MaterialGlobalIlluminationFlags.EmissiveIsBlack;
 
@@ -48,22 +42,26 @@ public class highlight : MonoBehaviour
 
     void OnMouseEnter()
     {
-        //particleSystem.Play();
+        if (particleSystem)
+            particleSystem.Play();
         _material.EnableKeyword("_EMISSION");
         _material.globalIlluminationFlags = MaterialGlobalIlluminationFlags.None;
-        Debug.Log("working");
     }
 
-      private void OnMouseUpAsButton(){
-        Debug.Log(page);
-            if(page == 0){
-                b.clickedPlan();
-            }else if (page == 1){
-                b.clickedDisrupted();
-            }else if(page == 2){
-                b.clickedChecklist();
-            }else if(page == 3){
-                b.clickedBlueprint();
-            }
+    public void setPage(scrapBookPage page)
+    {
+        _page = page;
     }
+
+    public void setActivateUI(GameObject ui)
+    {
+        _activateUI = ui;
+    }
+
+   private void OnMouseUpAsButton(){
+       if (_activateUI)
+           _activateUI.gameObject.SetActive(true);
+       if (_page)
+           _page.activate();
+   }
 }

@@ -291,7 +291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &121498412
 RectTransform:
   m_ObjectHideFlags: 0
@@ -355,8 +355,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1127525046}
-        m_TargetAssemblyTypeName: scrapbookLobbyScene, Assembly-CSharp
+      - m_Target: {fileID: 1127525051}
+        m_TargetAssemblyTypeName: scrapBook, Assembly-CSharp
         m_MethodName: nextPage
         m_Mode: 1
         m_Arguments:
@@ -673,9 +673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e97d6c6b77512344c9dcb637351250c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  b: {fileID: 1127525046}
-  page: 1
-  activeColor: {r: 0.21960784, g: 0.65882355, b: 0.78431374, a: 0}
+  particleSystem: {fileID: 0}
   _material: {fileID: 2100000, guid: d463c6c22148ef84bb13db0e42277080, type: 2}
 --- !u!1 &240909984
 GameObject:
@@ -834,9 +832,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1127525046}
-        m_TargetAssemblyTypeName: scrapbookLobbyScene, Assembly-CSharp
-        m_MethodName: scrap
+      - m_Target: {fileID: 1127525051}
+        m_TargetAssemblyTypeName: scrapBook, Assembly-CSharp
+        m_MethodName: open
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -896,6 +894,7 @@ GameObject:
   - component: {fileID: 365836294}
   - component: {fileID: 365836293}
   - component: {fileID: 365836292}
+  - component: {fileID: 365836295}
   m_Layer: 5
   m_Name: travel
   m_TagString: Untagged
@@ -966,9 +965,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1127525046}
-        m_TargetAssemblyTypeName: scrapbookLobbyScene, Assembly-CSharp
-        m_MethodName: sceneLoad
+      - m_Target: {fileID: 365836295}
+        m_TargetAssemblyTypeName: sceneLoader, Assembly-CSharp
+        m_MethodName: LoadNextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1016,6 +1015,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 365836290}
   m_CullTransparentMesh: 1
+--- !u!114 &365836295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365836290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65094b994e3f7e40bc7e5c691cda5c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: 
 --- !u!1 &367087139
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,6 +1040,7 @@ GameObject:
   - component: {fileID: 367087143}
   - component: {fileID: 367087142}
   - component: {fileID: 367087141}
+  - component: {fileID: 367087144}
   m_Layer: 5
   m_Name: planPhoto
   m_TagString: Untagged
@@ -1122,6 +1135,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &367087144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367087139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce65e551297ee2f4bbeb99e1157a7af7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &372222750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1518,6 +1543,7 @@ GameObject:
   - component: {fileID: 583438715}
   - component: {fileID: 583438714}
   - component: {fileID: 583438713}
+  - component: {fileID: 583438716}
   m_Layer: 5
   m_Name: 'disruptionPhoto '
   m_TagString: Untagged
@@ -1612,6 +1638,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &583438716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583438711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce65e551297ee2f4bbeb99e1157a7af7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &635681369
 GameObject:
   m_ObjectHideFlags: 0
@@ -2057,9 +2095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e97d6c6b77512344c9dcb637351250c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  b: {fileID: 1127525046}
-  page: 3
-  activeColor: {r: 0.21960784, g: 0.65882355, b: 0.78431374, a: 0}
+  particleSystem: {fileID: 0}
   _material: {fileID: 2100000, guid: 537cb339aab94374a8a4ade80bf87c3c, type: 2}
 --- !u!1 &733619336
 GameObject:
@@ -2400,9 +2436,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1127525046}
-        m_TargetAssemblyTypeName: scrapbookLobbyScene, Assembly-CSharp
-        m_MethodName: back
+      - m_Target: {fileID: 1411183570}
+        m_TargetAssemblyTypeName: activateUI, Assembly-CSharp
+        m_MethodName: closeUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2462,6 +2498,7 @@ GameObject:
   - component: {fileID: 825273218}
   - component: {fileID: 825273217}
   - component: {fileID: 825273216}
+  - component: {fileID: 825273219}
   m_Layer: 5
   m_Name: blueprintsPhoto
   m_TagString: Untagged
@@ -2557,6 +2594,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &825273219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825273214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce65e551297ee2f4bbeb99e1157a7af7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &922185395
 GameObject:
   m_ObjectHideFlags: 0
@@ -2799,13 +2848,14 @@ GameObject:
   - component: {fileID: 1022435392}
   - component: {fileID: 1022435391}
   - component: {fileID: 1022435390}
+  - component: {fileID: 1022435393}
   m_Layer: 5
   m_Name: planCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1022435389
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2890,6 +2940,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1022435393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022435388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2abb6ade0aa18d41aeca089c449b39b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barePage: {fileID: 922185395}
+  activePage: {fileID: 160734450}
 --- !u!1 &1032745079 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a287e8c634de2694c8c2f8d7bbf5f287, type: 3}
@@ -2907,9 +2971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e97d6c6b77512344c9dcb637351250c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  b: {fileID: 1127525046}
-  page: 2
-  activeColor: {r: 0.21960784, g: 0.65882355, b: 0.78431374, a: 0}
+  particleSystem: {fileID: 0}
   _material: {fileID: 2100000, guid: 17b7126a1d89fc74b95dc96bd93be0b2, type: 2}
 --- !u!65 &1032745082
 BoxCollider:
@@ -2986,44 +3048,14 @@ GameObject:
   - component: {fileID: 1127525050}
   - component: {fileID: 1127525049}
   - component: {fileID: 1127525048}
-  - component: {fileID: 1127525046}
+  - component: {fileID: 1127525051}
   m_Layer: 5
   m_Name: scrapbook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1127525046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127525045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 704f0471109df6f4aa9cba11fe0611ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrapbook: {fileID: 1127525045}
-  icon: {fileID: 310065948}
-  prev: {fileID: 1832704978}
-  next: {fileID: 121498411}
-  backB: {fileID: 1727341803}
-  disruption: {fileID: 1252939470}
-  blueprints: {fileID: 1735407070}
-  plan: {fileID: 1022435388}
-  checklist: {fileID: 1166341159}
-  planI: {fileID: 160734450}
-  disruptionI: {fileID: 68937780}
-  blueprintsI: {fileID: 21956731}
-  checklistI: {fileID: 1549170568}
-  planUI: {fileID: 367087139}
-  disruptionUI: {fileID: 583438711}
-  blueprintsUI: {fileID: 825273214}
-  checklistUI: {fileID: 1411183565}
-  travelButton: {fileID: 365836290}
+  m_IsActive: 1
 --- !u!224 &1127525047
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3113,6 +3145,37 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1127525051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127525045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91669e12432786d4e89f99734f1c5777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activators:
+  - {fileID: 1494497929}
+  - {fileID: 227025877}
+  - {fileID: 1032745081}
+  - {fileID: 719113126}
+  pages:
+  - {fileID: 1022435393}
+  - {fileID: 1252939475}
+  - {fileID: 1166341164}
+  - {fileID: 1735407075}
+  uis:
+  - {fileID: 367087139}
+  - {fileID: 583438711}
+  - {fileID: 1411183565}
+  - {fileID: 825273214}
+  nextButton: {fileID: 121498411}
+  prevButton: {fileID: 1832704978}
+  backButton: {fileID: 1727341803}
+  travelButton: {fileID: 365836290}
 --- !u!1 &1127860908
 GameObject:
   m_ObjectHideFlags: 0
@@ -3334,6 +3397,7 @@ GameObject:
   - component: {fileID: 1166341163}
   - component: {fileID: 1166341162}
   - component: {fileID: 1166341161}
+  - component: {fileID: 1166341164}
   m_Layer: 5
   m_Name: checklistCanvas
   m_TagString: Untagged
@@ -3425,6 +3489,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1166341164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166341159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2abb6ade0aa18d41aeca089c449b39b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barePage: {fileID: 1500685778}
+  activePage: {fileID: 1549170568}
 --- !u!1 &1171524660
 GameObject:
   m_ObjectHideFlags: 0
@@ -3587,6 +3665,7 @@ GameObject:
   - component: {fileID: 1252939474}
   - component: {fileID: 1252939473}
   - component: {fileID: 1252939472}
+  - component: {fileID: 1252939475}
   m_Layer: 5
   m_Name: disruptionCanvas
   m_TagString: Untagged
@@ -3678,6 +3757,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1252939475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252939470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2abb6ade0aa18d41aeca089c449b39b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barePage: {fileID: 2099186135}
+  activePage: {fileID: 68937780}
 --- !u!1 &1253423113
 GameObject:
   m_ObjectHideFlags: 0
@@ -3899,6 +3992,7 @@ GameObject:
   - component: {fileID: 1411183569}
   - component: {fileID: 1411183568}
   - component: {fileID: 1411183567}
+  - component: {fileID: 1411183570}
   m_Layer: 5
   m_Name: checklistPhoto
   m_TagString: Untagged
@@ -3995,6 +4089,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1411183570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411183565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce65e551297ee2f4bbeb99e1157a7af7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1494497924
 GameObject:
   m_ObjectHideFlags: 0
@@ -4113,9 +4219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e97d6c6b77512344c9dcb637351250c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  b: {fileID: 1127525046}
-  page: 0
-  activeColor: {r: 0.21791564, g: 0.65997756, b: 0.7830189, a: 1}
+  particleSystem: {fileID: 0}
   _material: {fileID: 2100000, guid: ce9612c2bfff1d241aadb133d57d931d, type: 2}
 --- !u!1 &1500685778
 GameObject:
@@ -4274,9 +4378,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1127525046}
-        m_TargetAssemblyTypeName: scrapbookLobbyScene, Assembly-CSharp
-        m_MethodName: back
+      - m_Target: {fileID: 583438716}
+        m_TargetAssemblyTypeName: activateUI, Assembly-CSharp
+        m_MethodName: closeUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4406,7 +4510,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1127525046}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: scrapbookLobbyScene, Assembly-CSharp
         m_MethodName: back
         m_Mode: 1
@@ -4613,9 +4717,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1127525046}
-        m_TargetAssemblyTypeName: scrapbookLobbyScene, Assembly-CSharp
-        m_MethodName: back
+      - m_Target: {fileID: 367087144}
+        m_TargetAssemblyTypeName: activateUI, Assembly-CSharp
+        m_MethodName: closeUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4831,7 +4935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1727341804
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4895,9 +4999,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1127525046}
-        m_TargetAssemblyTypeName: scrapbookLobbyScene, Assembly-CSharp
-        m_MethodName: back
+      - m_Target: {fileID: 1127525051}
+        m_TargetAssemblyTypeName: scrapBook, Assembly-CSharp
+        m_MethodName: close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4957,13 +5061,14 @@ GameObject:
   - component: {fileID: 1735407074}
   - component: {fileID: 1735407073}
   - component: {fileID: 1735407072}
+  - component: {fileID: 1735407075}
   m_Layer: 5
   m_Name: blueprintCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1735407071
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5049,6 +5154,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1735407075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735407070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2abb6ade0aa18d41aeca089c449b39b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barePage: {fileID: 125563860}
+  activePage: {fileID: 21956731}
 --- !u!1 &1757781059
 GameObject:
   m_ObjectHideFlags: 0
@@ -5276,7 +5395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1832704979
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5340,8 +5459,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1127525046}
-        m_TargetAssemblyTypeName: scrapbookLobbyScene, Assembly-CSharp
+      - m_Target: {fileID: 1127525051}
+        m_TargetAssemblyTypeName: scrapBook, Assembly-CSharp
         m_MethodName: prevPage
         m_Mode: 1
         m_Arguments:
@@ -5407,9 +5526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e97d6c6b77512344c9dcb637351250c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  b: {fileID: 1127525046}
-  page: 5
-  activeColor: {r: 0.21960784, g: 0.65882355, b: 0.78431374, a: 0}
+  particleSystem: {fileID: 0}
   _material: {fileID: 2100000, guid: 90e4b3c60603d6840a693abb5ecade4a, type: 2}
 --- !u!65 &1881986506
 BoxCollider:
@@ -6183,9 +6300,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1127525046}
-        m_TargetAssemblyTypeName: scrapbookLobbyScene, Assembly-CSharp
-        m_MethodName: back
+      - m_Target: {fileID: 825273219}
+        m_TargetAssemblyTypeName: activateUI, Assembly-CSharp
+        m_MethodName: closeUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6315,7 +6432,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1127525046}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: scrapbookLobbyScene, Assembly-CSharp
         m_MethodName: back
         m_Mode: 1
