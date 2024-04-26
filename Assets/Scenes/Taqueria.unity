@@ -5491,9 +5491,9 @@ MonoBehaviour:
   - {fileID: 823869125}
   - {fileID: 1023401452}
   uis:
-  - {fileID: 82803067}
-  - {fileID: 331749675}
-  - {fileID: 1378498045}
+  - {fileID: 82803072}
+  - {fileID: 331749676}
+  - {fileID: 1378498046}
   scrapBookButton: {fileID: 417382262}
   nextButton: {fileID: 2042511716}
   prevButton: {fileID: 548517769}

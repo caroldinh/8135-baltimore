@@ -7,7 +7,7 @@ public class scrapBook : MonoBehaviour
 {
     public List<Highlight> activators;
     public List<scrapBookPage> pages;
-    public List<GameObject> uis;
+    public List<activateUI> uis;
 
     public GameObject scrapBookButton;
     public GameObject nextButton;
@@ -48,7 +48,7 @@ public class scrapBook : MonoBehaviour
         bool allOpen = true;
         foreach (scrapBookPage page in pages)
         {
-            if (!page.getActive())
+            if (page != null && !page.getActive())
             {
                 allOpen = false;
             }
@@ -73,26 +73,19 @@ public class scrapBook : MonoBehaviour
         travelButton.SetActive(false);
         foreach (scrapBookPage page in pages)
         {
-            page.closePage();
+            if (page != null)
+            {
+                page.closePage();
+            }
         }
     }
     
     public void nextPage()
     {
         pageCounter++;
-        foreach (scrapBookPage page in pages)
-        {
-            if (pages.IndexOf(page) == pageCounter)
-            {
-                page.openPage();
-            }
-            else
-            {
-                page.closePage();
-            } 
-        }
+        displayCurrPage();
         prevButton.SetActive(true);
-        if (pageCounter + 1 >= pages.Count)
+        if (pageCounter >= pages.Count || pages[pageCounter + 1] == null)
         {
             nextButton.SetActive(false);
         }
@@ -100,21 +93,29 @@ public class scrapBook : MonoBehaviour
 
     public void prevPage(){
         pageCounter--;
-        foreach (scrapBookPage page in pages)
-        {
-            if (pages.IndexOf(page) == pageCounter)
-            {
-                page.openPage();
-            }
-            else
-            {
-                page.closePage();
-            } 
-        }
+        displayCurrPage();
         nextButton.SetActive(true);
         if (pageCounter == 0)
         {
             prevButton.SetActive(false);
+        }
+    }
+
+    private void displayCurrPage()
+    {
+        foreach (scrapBookPage page in pages)
+        {
+            if (page != null)
+            {
+                if (pages.IndexOf(page) == pageCounter)
+                {
+                    page.openPage();
+                }
+                else
+                {
+                    page.closePage();
+                } 
+            }
         }
     }
 }

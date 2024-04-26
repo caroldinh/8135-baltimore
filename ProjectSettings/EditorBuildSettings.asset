@@ -5,10 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/FinalScenePrototype.unity
-    guid: 7c68ec25e6ea2f14ba5c5341beecd14d
+  - enabled: 1
+    path: Assets/Scenes/LandAcknowledgement.unity
+    guid: 58f4e772f80e4764cbcf6943e33a29e8
+  - enabled: 1
+    path: Assets/Scenes/LobbyScene.unity
+    guid: 3f0dc327cac9d904aab8d4b47f18948f
+  - enabled: 1
+    path: Assets/Scenes/blueprint.unity
+    guid: 136db6dec799da8408ed9b98186737a1
   - enabled: 1
     path: Assets/Scenes/Taqueria.unity
-    guid: 84c9193196b1cc142a8b9e3c9afb14a9
+    guid: 9328e092930811642a3799f8feca2533
   m_configObjects: {}

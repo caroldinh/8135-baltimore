@@ -13,7 +13,7 @@ public class Highlight : MonoBehaviour
     private SmoothMouseLook _mouseLook;
     public Material _material;
     
-    private GameObject _activateUI;
+    private activateUI _activateUI;
     private scrapBookPage _page;
 
 
@@ -56,7 +56,7 @@ public class Highlight : MonoBehaviour
         _page = page;
     }
 
-    public void setActivateUI(GameObject ui)
+    public void setActivateUI(activateUI ui)
     {
         _activateUI = ui;
     }
