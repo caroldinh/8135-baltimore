@@ -251,9 +251,9 @@ GameObject:
   - component: {fileID: 13752809}
   - component: {fileID: 13752808}
   - component: {fileID: 13752807}
-  - component: {fileID: 13752811}
   - component: {fileID: 13752812}
   - component: {fileID: 13752813}
+  - component: {fileID: 13752814}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -335,19 +335,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &13752811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 13752806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6a1e1bebe3f81648a97765a57348dec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
 --- !u!82 &13752812
 AudioSource:
   m_ObjectHideFlags: 0
@@ -488,6 +475,19 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &13752814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13752806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5d7dda7aabe16c43ba5e695f6e72100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slowFactor: 500
 --- !u!1 &19723906
 GameObject:
   m_ObjectHideFlags: 0

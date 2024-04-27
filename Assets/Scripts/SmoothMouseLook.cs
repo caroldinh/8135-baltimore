@@ -28,8 +28,10 @@ namespace UnityLibrary
 
         void LateUpdate()
         {
+            
             if (!isPaused)
             {
+                
                 // pressing esc toggles between hide/show and lock/unlock cursor
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
@@ -69,6 +71,7 @@ namespace UnityLibrary
                     _mouseAbsolute.y = Mathf.Clamp(_mouseAbsolute.y, -clampInDegrees.y * 0.5f, clampInDegrees.y * 0.5f);
 
                 var yRotation = Quaternion.AngleAxis(_mouseAbsolute.x, transform.InverseTransformDirection(Vector3.up));
+                
                 transform.localRotation *= yRotation;
                 transform.rotation *= targetOrientation;
             }
