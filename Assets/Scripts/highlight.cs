@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.VFX;
 using UnityLibrary;
@@ -62,6 +63,7 @@ public class Highlight : MonoBehaviour
     }
 
    private void OnMouseUpAsButton(){
+       if (EventSystem.current.IsPointerOverGameObject()) return;
        if (_activateUI)
            _activateUI.gameObject.SetActive(true);
        if (_page)

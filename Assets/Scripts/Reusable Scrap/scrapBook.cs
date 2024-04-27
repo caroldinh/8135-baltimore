@@ -85,7 +85,7 @@ public class scrapBook : MonoBehaviour
         pageCounter++;
         displayCurrPage();
         prevButton.SetActive(true);
-        if (pageCounter >= pages.Count || pages[pageCounter + 1] == null)
+        if (pageCounter == pages.Count - 1 || pages[pageCounter + 1] == null)
         {
             nextButton.SetActive(false);
         }

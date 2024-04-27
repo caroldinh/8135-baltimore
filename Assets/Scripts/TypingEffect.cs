@@ -11,6 +11,8 @@ public class TypingEffect : MonoBehaviour
     public GameObject appearAfterType;
     public float appearDelay = 3.0f;
 
+    public AudioSource typing;
+
     private string fullText; // The complete text to be typed
 
     private void Start()
@@ -19,6 +21,8 @@ public class TypingEffect : MonoBehaviour
         fullText = textMeshPro.text; // Store the full text
         textMeshPro.text = string.Empty; // Clear the text
         StartCoroutine(TypeText()); // Start typing animation
+        typing.loop = true;
+        typing.Play();
     }
 
     // Coroutine to simulate typing effect
@@ -30,6 +34,7 @@ public class TypingEffect : MonoBehaviour
             yield return new WaitForSeconds(typingSpeed); // Wait for the specified duration
         }
 
+        typing.Stop();
         yield return new WaitForSeconds(appearDelay);
         appearAfterType.SetActive(true);
     }
