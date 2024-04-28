@@ -9,6 +9,7 @@ public class Slerp : MonoBehaviour
 	private Transform from;
 	private Transform to;
 	private float timeCount = 0.0f;
+	private bool isPaused;
 
 	public int slowFactor = 500;
 	
@@ -21,11 +22,23 @@ public class Slerp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-	    //from = transform;
-		rotation.y += Input.GetAxis ("Mouse X");
-		rotation.x += -Input.GetAxis ("Mouse Y");
-		Quaternion target = Quaternion.Euler(rotation.x, rotation.y, 0);
-        transform.rotation = Quaternion.Slerp(transform.rotation, target, timeCount / slowFactor);
-        timeCount = timeCount + Time.deltaTime;
+	    if (!isPaused)
+	    {
+			rotation.y += Input.GetAxis ("Mouse X");
+			rotation.x += -Input.GetAxis ("Mouse Y");
+			Quaternion target = Quaternion.Euler(rotation.x, rotation.y, 0);
+			transform.rotation = Quaternion.Slerp(transform.rotation, target, timeCount / slowFactor);
+			timeCount = timeCount + Time.deltaTime;
+	    }
     }
+    
+	public void PauseLook()
+	{
+		isPaused = true;
+	}
+
+	public void ResumeLook()
+	{
+		isPaused = false;
+	}
 }

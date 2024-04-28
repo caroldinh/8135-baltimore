@@ -7,11 +7,12 @@ public class activateUI : MonoBehaviour
 {
 
     //public List<GameObject> childrenToEnable;
+    private Slerp _camera;
     
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start(){
+        if (Camera.main)
+            _camera = Camera.main.GetComponent<Slerp>();
     }
 
     // Update is called once per frame
@@ -20,23 +21,19 @@ public class activateUI : MonoBehaviour
         
     }
 
-    /*
     private void OnEnable()
     {
-        foreach (GameObject child in childrenToEnable)
+        if (_camera)
         {
-            child.SetActive(true);
+            _camera.PauseLook();
         }
     }
 
     private void OnDisable()
     {
-        foreach (GameObject child in childrenToEnable)
-        {
-            child.SetActive(false);
-        }
+        if (_camera)
+            _camera.ResumeLook();
     }
-    */
 
     public void closeUI()
     {
