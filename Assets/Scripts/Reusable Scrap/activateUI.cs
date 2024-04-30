@@ -8,6 +8,7 @@ public class activateUI : MonoBehaviour
 
     //public List<GameObject> childrenToEnable;
     private Slerp _camera;
+    private GameObject _updated;
     
     // Start is called before the first frame update
     void Start(){

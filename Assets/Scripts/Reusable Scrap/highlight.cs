@@ -10,6 +10,7 @@ public class Highlight : MonoBehaviour
 {
     // Start is called before the first frame update
     public VisualEffect particleSystem;
+    public progressImage progressImage;
     
     private SmoothMouseLook _mouseLook;
     public Material _material;
@@ -66,7 +67,10 @@ public class Highlight : MonoBehaviour
        if (EventSystem.current.IsPointerOverGameObject()) return;
        if (_activateUI)
            _activateUI.gameObject.SetActive(true);
-       if (_page)
+       if (_page && !_page.getActive())
+       {
            _page.activate();
+           progressImage.updateProgress();
+       }
    }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class scrapBook : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class scrapBook : MonoBehaviour
     public List<scrapBookPage> pages;
     public List<activateUI> uis;
 
-    public GameObject scrapBookButton;
+    public GameObject alwaysCanvas;
     public GameObject nextButton;
     public GameObject prevButton;
     public GameObject backButton;
@@ -27,6 +28,7 @@ public class scrapBook : MonoBehaviour
             activator.setActivateUI(uis[index]);
             index += 1;
         }
+
     }
 
     // Update is called once per frame
@@ -38,7 +40,7 @@ public class scrapBook : MonoBehaviour
     public void open()
     {
         pageCounter = 0;
-        scrapBookButton.SetActive(false);
+        alwaysCanvas.SetActive(false);
         gameObject.SetActive(true);
         backButton.SetActive(true);
         pages[pageCounter].openPage();
@@ -46,6 +48,10 @@ public class scrapBook : MonoBehaviour
         nextButton.SetActive(true);
         // Check if all pages are open
         bool allOpen = true;
+        foreach (activateUI ui in uis)
+        {
+            ui.closeUI();
+        }
         foreach (scrapBookPage page in pages)
         {
             if (page != null && !page.getActive())
@@ -65,7 +71,7 @@ public class scrapBook : MonoBehaviour
     
     public void close()
     {
-        scrapBookButton.SetActive(true);
+        alwaysCanvas.SetActive(true);
         //gameObject.SetActive(false);
         backButton.SetActive(false);
         prevButton.SetActive(false);
@@ -118,4 +124,5 @@ public class scrapBook : MonoBehaviour
             }
         }
     }
+
 }
