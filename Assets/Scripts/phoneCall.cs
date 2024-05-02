@@ -11,7 +11,6 @@ public class phoneCall : MonoBehaviour
     public AudioSource ashley;
     public AudioSource andrea;
 
-
     private int count = 0; 
     private bool active = true;
     // Start is called before the first frame update
@@ -23,7 +22,8 @@ public class phoneCall : MonoBehaviour
     // Update is called once per frame
     
 
-    private void OnMouseUpAsButton(){
+    //private void OnMouseUpAsButton(){
+    public void PlayCalls(){
         if(active){
             ring.Pause();
 
@@ -65,4 +65,5 @@ public class phoneCall : MonoBehaviour
         //After we have waited 5 seconds print the time again.
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
     }
+
 }

@@ -1,12 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.VFX;
 using UnityLibrary;
 
-public class Highlight : MonoBehaviour
+/*
+[Serializable]
+public class CustomClickEvent : UnityEvent {}
+*/
+
+public class Highlight : MonoBehaviour, IInteractable
 {
     // Start is called before the first frame update
     public VisualEffect particleSystem;
@@ -18,6 +25,10 @@ public class Highlight : MonoBehaviour
     private activateUI _activateUI;
     private scrapBookPage _page;
 
+    private bool _startedActive = false;
+    private bool _startedIdle = false;
+
+    public UnityEvent onClick;
 
     void Start()
     {
@@ -33,25 +44,26 @@ public class Highlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        /*
+        if (_isFocused && !_startedActive)
+        {
+        }
+        else if (!_startedIdle)
+        {
+        }
+        */
     }
 
+    /*
     void OnMouseExit()
     {
-        if (particleSystem)
-            particleSystem.Play();
-        _material.DisableKeyword("_EMISSION");
-        _material.globalIlluminationFlags = MaterialGlobalIlluminationFlags.EmissiveIsBlack;
 
     }
 
     void OnMouseEnter()
     {
-        if (particleSystem)
-            particleSystem.Stop();
-        _material.EnableKeyword("_EMISSION");
-        _material.globalIlluminationFlags = MaterialGlobalIlluminationFlags.None;
     }
+    */
 
     public void setPage(scrapBookPage page)
     {
@@ -64,6 +76,10 @@ public class Highlight : MonoBehaviour
     }
 
    private void OnMouseUpAsButton(){
+   }
+
+   public void Interact()
+   {
        if (EventSystem.current.IsPointerOverGameObject()) return;
        if (_activateUI)
            _activateUI.gameObject.SetActive(true);
@@ -72,5 +88,37 @@ public class Highlight : MonoBehaviour
            _page.activate();
            progressImage.updateProgress();
        }
+
+       if (onClick != null)
+       {
+           onClick.Invoke();
+       }
    }
+
+   public void Hover()
+   {
+       if (!_startedActive)
+       {
+            _startedActive = true;
+            _startedIdle = false;
+            if (particleSystem)
+                particleSystem.Stop();
+            _material.EnableKeyword("_EMISSION");
+            _material.globalIlluminationFlags = MaterialGlobalIlluminationFlags.None;
+       }
+   }
+
+   public void Exit()
+   {
+       if (!_startedIdle)
+       {
+            _startedIdle = true;
+            _startedActive = false;
+            if (particleSystem)
+                particleSystem.Play();
+            _material.DisableKeyword("_EMISSION");
+            _material.globalIlluminationFlags = MaterialGlobalIlluminationFlags.EmissiveIsBlack;
+       }
+   }
+   
 }

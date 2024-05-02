@@ -15,6 +15,8 @@ public class scrapBook : MonoBehaviour
     public GameObject prevButton;
     public GameObject backButton;
     public GameObject travelButton;
+
+    public bool allActive;
     
     private int pageCounter = 0;
    
@@ -24,9 +26,23 @@ public class scrapBook : MonoBehaviour
         int index = 0;
         foreach (Highlight activator in activators)
         {
-            activator.setPage(pages[index]);
-            activator.setActivateUI(uis[index]);
-            index += 1;
+            if (activator != null)
+            {
+                activator.setPage(pages[index]);
+                activator.setActivateUI(uis[index]);
+                index += 1;
+            }
+        }
+
+        if (allActive)
+        {
+            foreach (scrapBookPage page in pages)
+            {
+                if (page != null)
+                {
+                    page.activate();
+                }
+            }
         }
 
     }
@@ -50,7 +66,10 @@ public class scrapBook : MonoBehaviour
         bool allOpen = true;
         foreach (activateUI ui in uis)
         {
-            ui.closeUI();
+            if (ui != null)
+            {
+                ui.closeUI();
+            }
         }
         foreach (scrapBookPage page in pages)
         {
@@ -59,11 +78,11 @@ public class scrapBook : MonoBehaviour
                 allOpen = false;
             }
         }
-        if (allOpen)
+        if (allOpen && !allActive)
         {
             travelButton.SetActive(true);
         }
-        else
+        else if (!allActive)
         {
             travelButton.SetActive(false);
         }
@@ -76,7 +95,8 @@ public class scrapBook : MonoBehaviour
         backButton.SetActive(false);
         prevButton.SetActive(false);
         nextButton.SetActive(false);
-        travelButton.SetActive(false);
+        if (travelButton != null)
+            travelButton.SetActive(false);
         foreach (scrapBookPage page in pages)
         {
             if (page != null)
