@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityLibrary;
 
 public class scrapBook : MonoBehaviour
 {
@@ -17,8 +18,11 @@ public class scrapBook : MonoBehaviour
     public GameObject travelButton;
 
     public bool allActive;
+
+    public Tutorial tutorial;
     
     private int pageCounter = 0;
+    private SmoothMouseLook _camera;
    
     // Start is called before the first frame update
     void Start()
@@ -50,7 +54,10 @@ public class scrapBook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown("space"))
+        {
+           open(); 
+        } 
     }
     
     public void open()
@@ -86,6 +93,10 @@ public class scrapBook : MonoBehaviour
         {
             travelButton.SetActive(false);
         }
+        if (_camera == null && Camera.main)
+            _camera = Camera.main.GetComponent<SmoothMouseLook>();
+        if (_camera)
+            _camera.PauseLook();
     }
     
     public void close()
@@ -104,6 +115,8 @@ public class scrapBook : MonoBehaviour
                 page.closePage();
             }
         }
+        if (_camera)
+            _camera.ResumeLook();
     }
     
     public void nextPage()
@@ -143,6 +156,16 @@ public class scrapBook : MonoBehaviour
                 } 
             }
         }
+    }
+
+    public bool currPageIsActive()
+    {
+        return pages[pageCounter].activePage.gameObject.activeSelf;
+    }
+
+    public bool OnLastPage()
+    {
+        return pageCounter == pages.Count - 1;
     }
 
 }

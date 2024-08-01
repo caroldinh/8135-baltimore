@@ -2,18 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityLibrary;
 
 public class activateUI : MonoBehaviour
 {
 
     //public List<GameObject> childrenToEnable;
-    private Slerp _camera;
+    private SmoothMouseLook _camera;
     private GameObject _updated;
+    public AudioLowPassFilter lowPassFilter;
     
     // Start is called before the first frame update
     void Start(){
-        if (Camera.main)
-            _camera = Camera.main.GetComponent<Slerp>();
     }
 
     // Update is called once per frame
@@ -24,6 +24,10 @@ public class activateUI : MonoBehaviour
 
     private void OnEnable()
     {
+        if (_camera == null && Camera.main)
+            _camera = Camera.main.GetComponent<SmoothMouseLook>();
+        if (lowPassFilter)
+            lowPassFilter.enabled = true;
         if (_camera)
         {
             _camera.PauseLook();
@@ -32,8 +36,12 @@ public class activateUI : MonoBehaviour
 
     private void OnDisable()
     {
+        if (lowPassFilter)
+            lowPassFilter.enabled = false;
         if (_camera)
+        {
             _camera.ResumeLook();
+        }
     }
 
     public void closeUI()

@@ -4,10 +4,10 @@ using UnityEngine.EventSystems;
 
 public class sceneLoader : MonoBehaviour
 {
-    public string sceneName;
+    public int sceneNumber;
     public void LoadScene()
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneNumber);
     }
 
     public void LoadNextScene()

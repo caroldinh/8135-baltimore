@@ -11,19 +11,19 @@ namespace UnityLibrary
         Vector2 _mouseAbsolute;
         Vector2 _smoothMouse;
 
+        public bool alwaysCursor = false;
+
         public Vector2 clampInDegrees = new Vector2(360, 180);
-        public bool lockCursor;
         public Vector2 sensitivity = new Vector2(2, 2);
         public Vector2 smoothing = new Vector2(3, 3);
         public Vector2 targetDirection;
 
-        private bool isPaused;
+        public bool isPaused;
 
         void Start()
         {
             // Set target direction to the camera's initial orientation.
             targetDirection = transform.rotation.eulerAngles;
-            Cursor.visible = !lockCursor;
         }
 
         void LateUpdate()
@@ -32,6 +32,7 @@ namespace UnityLibrary
             if (!isPaused)
             {
                 
+                /*
                 // pressing esc toggles between hide/show and lock/unlock cursor
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
@@ -41,6 +42,7 @@ namespace UnityLibrary
                 // Ensure the cursor is always locked when set
                 Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
                 Cursor.visible = !lockCursor;
+                */
 
                 // Allow the script to clamp based on a desired target value.
                 Quaternion targetOrientation = Quaternion.Euler(targetDirection);
@@ -79,11 +81,18 @@ namespace UnityLibrary
 
         public void PauseLook()
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             isPaused = true;
         }
 
         public void ResumeLook()
         {
+            if (!alwaysCursor)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
             isPaused = false;
         }
     }

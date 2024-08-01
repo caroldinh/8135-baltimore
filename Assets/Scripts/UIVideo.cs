@@ -9,6 +9,7 @@ public class UIVideo : MonoBehaviour
 {
 
     private VideoPlayer _videoPlayer;
+
     private SmoothMouseLook _mouseLook;
     // Start is called before the first frame update
     void Start()
