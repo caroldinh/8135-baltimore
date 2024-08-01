@@ -18,6 +18,8 @@ public class Highlight : MonoBehaviour, IInteractable
     // Start is called before the first frame update
     public VisualEffect particleSystem;
     public progressImage progressImage;
+    public AudioClip audioClip;
+    public AudioController audioController;
     
     private SmoothMouseLook _mouseLook;
     public Material _material;
@@ -81,6 +83,15 @@ public class Highlight : MonoBehaviour, IInteractable
    public void Interact()
    {
        if (EventSystem.current.IsPointerOverGameObject()) return;
+        if (audioClip && audioController)
+        {
+            if (audioController.GetComponent<AudioSource>().isPlaying)
+            {
+                audioController.alertIncompleteAudio();
+                return;
+            }
+            audioController.SetAndPlayAudio(audioClip);
+        }
        if (_activateUI)
            _activateUI.gameObject.SetActive(true);
        if (_page && !_page.getActive())

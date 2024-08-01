@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityLibrary;
 
@@ -32,6 +33,7 @@ public class activateUI : MonoBehaviour
         {
             _camera.PauseLook();
         }
+
     }
 
     private void OnDisable()

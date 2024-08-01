@@ -18,6 +18,7 @@ public class FadeInOut : MonoBehaviour
 
     void OnEnable()
     {
+        _self = gameObject.GetComponent<Image>();
     }
 
     // Update is called once per frame
