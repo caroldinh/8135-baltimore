@@ -11,7 +11,7 @@ public class activateUI : MonoBehaviour
     //public List<GameObject> childrenToEnable;
     private SmoothMouseLook _camera;
     private GameObject _updated;
-    public AudioLowPassFilter lowPassFilter;
+    //public AudioLowPassFilter lowPassFilter;
     
     // Start is called before the first frame update
     void Start(){
@@ -27,8 +27,10 @@ public class activateUI : MonoBehaviour
     {
         if (_camera == null && Camera.main)
             _camera = Camera.main.GetComponent<SmoothMouseLook>();
+        /*
         if (lowPassFilter)
             lowPassFilter.enabled = true;
+            */
         if (_camera)
         {
             _camera.PauseLook();
@@ -38,8 +40,10 @@ public class activateUI : MonoBehaviour
 
     private void OnDisable()
     {
+        /*
         if (lowPassFilter)
             lowPassFilter.enabled = false;
+            */
         if (_camera)
         {
             _camera.ResumeLook();

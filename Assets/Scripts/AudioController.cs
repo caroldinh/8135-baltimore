@@ -12,6 +12,7 @@ public class AudioController : MonoBehaviour
 
     private RawImage _rawImage;
 
+    public AudioLowPassFilter lowPassFilter;
     public FadeInOut alertIncomplete;
     
     // Start is called before the first frame update
@@ -30,17 +31,14 @@ public class AudioController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!audio.gameObject.activeSelf)
-        {
-           // _rawImage.gameObject.SetActive(true);
-        }
-        else if (audio.isPlaying)
+        if (audio.isPlaying)
         {
             _rawImage.gameObject.SetActive(true);
         }
         else
         {
             _rawImage.gameObject.SetActive(false);
+            lowPassFilter.enabled = false;
         }
     }
 
@@ -48,6 +46,7 @@ public class AudioController : MonoBehaviour
     {
         audio.clip = clip;
         audio.Play();
+        lowPassFilter.enabled = true;
     }
 
     public void alertIncompleteAudio()
